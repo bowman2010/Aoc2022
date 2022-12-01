@@ -48,8 +48,8 @@ void CalorieCounting::part2()
     unsigned total=0;
     for (unsigned i=0; i<3; i++)
     {
-        cout << "Elf #" << " carries " << v1[i] << " camories." << endl;
+        cout << "Elf #" << " carries " << v1[i] << " calories." << endl;
         total += v1[i];
     }
-    cout << "Top 3 elves carry " << total << " total caloriess" << endl << endl;
+    cout << "Top 3 elves carry " << total << " total calories" << endl << endl;
 }
