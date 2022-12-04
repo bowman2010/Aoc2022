@@ -34,7 +34,6 @@ void CampCleaning::part2()
     for (ElvesPairJob epj : jobs) {
         if (epj.overlap()) {
             total++;
-            cout << epj.str() << endl;
         }
     }
     cout << "Total of overlapping jobs : " << total << endl;
