@@ -46,6 +46,33 @@ std::vector<std::string> splitStr(const std::string str, const char sep=' ')
     return sv;
 }
 
+/**
+ * @brief leftPad : pad a string with char to length len
+ * @param str : input string
+ * @param len : desired length
+ * @param pad : pad used for padding
+ * @return the padded string
+ */
+std::string leftPad(const std::string &str, size_t len, const char pad=' ')
+{
+    if (str.length()>=len) return str;
+    std::string paddedStr(len-str.size(), pad);
+    return paddedStr+str;
+}
+
+/**
+ * @brief rightPad : pad a string with char to length len
+ * @param str : input string
+ * @param len : desired length
+ * @param pad : pad used for padding
+ * @return the padded string
+ */
+std::string rightPad(const std::string &str, size_t len, const char pad=' ')
+{
+    if (str.length()>=len) return str;
+    std::string paddedStr(len-str.size(), pad);
+    return str+paddedStr;
+}
 
 } // Eof namespace
 
