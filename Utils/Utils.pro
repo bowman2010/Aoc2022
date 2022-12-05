@@ -11,5 +11,6 @@ HEADERS += \
     containerUtils.h \
     gridxy.h \
     check.h \
+    ioUtils.h \
     itemCounter.h \
     strUtils.h

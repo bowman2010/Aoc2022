@@ -13,10 +13,13 @@ namespace bml {
  * @param str
  * @return a lowercased string
  */
-std::string toLower(const std::string& str) {
-  std::string lower_str(str.size(), ' ');
-  std::transform(str.begin(), str.end(), lower_str.begin(), tolower);
-  return lower_str;
+std::string toLower(std::string& str) {
+    std::string s(str);
+    std::transform(
+        s.begin(), s.end(), s.begin(),
+        [](unsigned char c) { return std::tolower(c); }
+    );
+    return s;
 }
 
 /**
@@ -24,10 +27,13 @@ std::string toLower(const std::string& str) {
  * @param str
  * @return an uppercased string
  */
-std::string toUpper(const std::string& str) {
-  std::string upper_str(str.size(), ' ');
-  std::transform(str.begin(), str.end(), upper_str.begin(), toupper);
-  return upper_str;
+std::string toUpper(std::string& str) {
+    std::string s(str);
+    std::transform(
+        s.begin(), s.end(), s.begin(),
+        [](unsigned char c) { return std::toupper(c); }
+    );
+    return s;
 }
 
 /**
@@ -73,6 +79,47 @@ std::string rightPad(const std::string &str, size_t len, const char pad=' ')
     std::string paddedStr(len-str.size(), pad);
     return str+paddedStr;
 }
+
+/**
+ * @brief trim : remove leading and trailing chars
+ * @param str
+ * @param chars : default to space char
+ * @return
+ */
+std::string trim(std::string str, std::string chars=" ")
+{
+    std::string s(str);
+    s.erase(str.find_last_not_of(chars) + 1);
+    s.erase(0,str.find_first_not_of(chars));
+    return s;
+}
+
+/**
+ * @brief trimLeft : remove leading chars
+ * @param str
+ * @param chars : default to space char
+ * @return
+ */
+std::string trimLeft(std::string str, std::string chars=" ")
+{
+    std::string s(str);
+    s.erase(0,str.find_first_not_of(chars));
+    return s;
+}
+
+/**
+ * @brief trimRight: remove trailing chars
+ * @param str
+ * @param chars : default to space char
+ * @return
+ */
+std::string trimRight(std::string str, std::string chars=" ")
+{
+    std::string s(str);
+    s.erase(str.find_last_not_of(chars) + 1);
+    return s;
+}
+
 
 } // Eof namespace
 
