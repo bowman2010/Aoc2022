@@ -12,15 +12,25 @@ SupplyStacks::SupplyStacks(string fname)
     vector<bml::LinesBlock> puzzle = bml::loadBlocks(fname);
 
     loadMap(puzzle[0]);
+    orig_stacks = stacks;
     loadActions(puzzle[1]);
 }
 
 void SupplyStacks::part1()
 {
     cout << "Part #1" << endl;
-
+    stacks = orig_stacks;
     for (CraneAction ca: actionsList)
-        doCraneAction(ca);
+        doCrane9000Action(ca);
+    displayStacks();
+}
+
+void SupplyStacks::part2()
+{
+    cout << "Part #2" << endl;
+    stacks = orig_stacks;
+    for (CraneAction ca: actionsList)
+        doCrane9001Action(ca);
     displayStacks();
 }
 
@@ -45,13 +55,31 @@ void SupplyStacks::loadActions(vector<string> &actionsdef)
 
 }
 
-void SupplyStacks::doCraneAction(CraneAction action)
+void SupplyStacks::doCrane9000Action(CraneAction action)
 {
     for (int cnt=0; cnt<action.count; cnt++) {
         char c = stacks[action.from-1].top();
         stacks[action.from-1].pop();
         stacks[action.to-1].push(c);
     }
+}
+
+void SupplyStacks::doCrane9001Action(CraneAction action)
+{
+    stack<char> temp;
+
+    for (int cnt=0; cnt<action.count; cnt++) {
+        char c = stacks[action.from-1].top();
+        stacks[action.from-1].pop();
+        temp.push(c);
+    }
+
+    while (!temp.empty()) {
+        char c = temp.top();
+        stacks[action.to-1].push(c);
+        temp.pop();
+    }
+
 }
 
 void SupplyStacks::displayStacks()

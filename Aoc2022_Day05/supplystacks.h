@@ -17,15 +17,18 @@ struct CraneAction {
 
 class SupplyStacks
 {
+    array<stack<char>,9> orig_stacks;
     array<stack<char>,9> stacks;
     vector<CraneAction> actionsList;
 public:
     SupplyStacks(string fname);
     void part1();
+    void part2();
 private:
     void loadMap(vector<string> &mapDefStr);
     void loadActions(vector<string> &actionsdef);
-    void doCraneAction(CraneAction action);
+    void doCrane9000Action(CraneAction action);
+    void doCrane9001Action(CraneAction action);
     void displayStacks();
 };
 
