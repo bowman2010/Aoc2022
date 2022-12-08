@@ -1,6 +1,7 @@
 #include "tuningtrouble.h"
 #include <fstream>
 #include <sstream>
+#include <set>
 #include "check.h"
 
 TuningTrouble::TuningTrouble(string fname)
@@ -11,41 +12,36 @@ TuningTrouble::TuningTrouble(string fname)
     CHECK(!input.empty());
 }
 
-constexpr bool check4(char *c)
-{
-    return     c[0]!=c[1] && c[0]!=c[2] && c[0]!=c[3]
-            && c[1]!=c[2] && c[1]!=c[3]
-            && c[2]!=c[3];
-}
-
 void TuningTrouble::part1()
 {
-    stringstream ssi(input);
-    char ch4[4]; char nextCh;
+    cout << "Part #1" << endl;
+    cout << "  response : " << startOfPacket(input,4);
+}
 
-    unsigned    charCount =4;
-    size_t      charPtr = 0;
+void TuningTrouble::part2()
+{
+    cout << "Part #2" << endl;
+    cout << "  response : " << startOfPacket(input,14);
+}
 
-    ssi.get(ch4,5);
+int TuningTrouble::startOfPacket(string s, size_t packetLength)
+{
+    set<char> foundChars;
+    for (size_t startPos=0; startPos<s.length(); startPos++) {
 
-    while (!check4(ch4) && ssi.get(nextCh)) {
-        ch4[charPtr] = nextCh;
-        charPtr = (charPtr+1)%4;
-        charCount++;
+        foundChars.clear();
+        foundChars.insert(s[startPos]);
+
+        size_t npos;
+        for (npos=1; npos<packetLength; npos++) {
+            if (foundChars.count(s[startPos+npos])) break;
+            foundChars.insert(s[startPos+npos]);
+        }
+        if (npos==packetLength) return startPos+npos;
     }
-    cout << "Part 1 = " << charCount << endl;
-
+    return -1;
 }
 
-bool TuningTrouble::checkNoDupes(const unsigned n, const char *s) const
-{
-    return false;
-}
-
-constexpr bool checkN(size_t n, char *str)
-{
-    return true;
-}
 
 
 

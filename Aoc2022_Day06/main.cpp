@@ -10,5 +10,6 @@ int main()
 
     TuningTrouble ttr(puzzlePath("day06_input.txt"));
     ttr.part1();
+    ttr.part2();
     return 0;
 }

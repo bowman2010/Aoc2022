@@ -10,9 +10,10 @@ class TuningTrouble
 public:
     TuningTrouble(string fname);
     void part1();
+    void part2();
 
 protected:
-    bool checkNoDupes(const unsigned n, const char *s) const;
+    int startOfPacket(string s, size_t packetLength);
 };
 
 #endif // TUNINGTROUBLE_H
