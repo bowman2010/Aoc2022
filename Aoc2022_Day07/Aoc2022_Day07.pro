@@ -5,8 +5,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        fssim.cpp \
         main.cpp \
         nospaceleft.cpp
 
 HEADERS += \
+    fssim.h \
     nospaceleft.h
