@@ -6,4 +6,7 @@ SUBDIRS += \
     Aoc2022_Day03 \
     Aoc2022_Day04 \
     Aoc2022_Day05 \
+    Aoc2022_Day06 \
+    Aoc2022_Day07 \
+    Aoc2022_Day08 \
     Utils
