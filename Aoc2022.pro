@@ -10,4 +10,5 @@ SUBDIRS += \
     Aoc2022_Day07 \
     Aoc2022_Day08 \
     Aoc2022_Day09 \
+    Aoc2022_Day10 \
     Utils
