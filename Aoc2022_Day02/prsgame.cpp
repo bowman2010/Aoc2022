@@ -88,7 +88,7 @@ char PrsGame::shouldPlay(char p1, char goal)
                 case(A_PAPER)   : return B_PAPER;
                 case(A_SCISSOR) : return B_SCISSOR;
             }
-        };
+        }; break;
 
         case SHOULD_WIN : {
             switch(p1) {
@@ -96,7 +96,7 @@ char PrsGame::shouldPlay(char p1, char goal)
                 case(A_PAPER)   : return B_SCISSOR;
                 case(A_SCISSOR) : return B_ROCK;
             }
-        };
+        }; break;
 
         case SHOULD_LOOSE: {
             switch(p1) {
@@ -104,7 +104,7 @@ char PrsGame::shouldPlay(char p1, char goal)
                 case(A_PAPER)   : return B_ROCK;
                 case(A_SCISSOR) : return B_PAPER;
             }
-        };
+        }; break;
     }
     return '?';
 }

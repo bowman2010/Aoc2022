@@ -1,11 +1,17 @@
 #ifndef AOC2022_H
 #define AOC2022_H
 #include <string>
+#include <cstdlib>
 
-#define PUZZLE_PATH "/home/bowman/Dev/AOC2022_Puzzles/"
+#define PUZZLES_PATH "/home/bowman/Dev/Cpp_Projects/Aoc2022/Puzzles/"
 
 std::string puzzlePath(std::string fname) {
-    std::string ppath = PUZZLE_PATH+fname;
-    return ppath;
+    if(const char* ve = std::getenv("AOC2022_PPATH"))
+    {
+        std::string ppath(ve);
+        ppath.append("/"+fname);
+        return ppath;
+    }
+    else exit(2);
 }
 #endif // AOC2022_H
