@@ -13,3 +13,5 @@ SUBDIRS += \
     Aoc2022_Day10 \
     Aoc2022_Day11 \
     Utils
+
+OTHER_FILES += Puzzles/*
