@@ -12,6 +12,7 @@ SUBDIRS += \
     Aoc2022_Day09 \
     Aoc2022_Day10 \
     Aoc2022_Day11 \
+    Aoc2022_Day12 \
     Utils
 
 OTHER_FILES += Puzzles/*
