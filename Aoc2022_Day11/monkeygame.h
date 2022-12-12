@@ -13,8 +13,9 @@ class MonkeyGame
 public:
     MonkeyGame(string fname);
     void part1();
-
-    void monkeysList();
+    void part2();
+private:
+    void play(unsigned nbRounds, bool maxworry);
 };
 
 #endif // MONKEYGAME_H

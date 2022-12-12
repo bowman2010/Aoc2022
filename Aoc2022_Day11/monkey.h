@@ -8,7 +8,7 @@
 using namespace std;
 
 using MonkeyNr = int;
-using Item = unsigned long;
+using Item = unsigned long long;
 
 class Monkey
 {
@@ -18,11 +18,11 @@ class Monkey
     int  testVal;
     int  targetTrue;
     int  targetFalse;
-    int  activity;
+    unsigned long long activity;
     vector<Item> items;
 public:
     Monkey();
-    vector<pair<MonkeyNr,Item>> throwItems();
+    vector<pair<MonkeyNr,Item>> throwItems(bool maxworry=false);
 
     string itemsStr();
     void addItem(Item item);
@@ -32,7 +32,7 @@ public:
     void setTestVal(int newTestVal);
     void setTargetTrue(int newTargetTrue);
     void setTargetFalse(int newTargetFalse);
-    int getActivity() const;
+    unsigned long long getActivity() const;
 };
 
 #endif // MONKEY_H

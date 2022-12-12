@@ -50,23 +50,8 @@ MonkeyGame::MonkeyGame(string fname)
 void MonkeyGame::part1()
 {
     cout << "Part #1 : " << endl;
-    for (int round=1; round<=20; round++) {
-        cout << " -- Round " << round << " --" << endl;
-        int monkeyNr = 0;
-        for(Monkey &monkey : monkeys) {
-            cout << "  Monkey " << monkeyNr++ << ":" << endl;
-            auto sendList = monkey.throwItems();
-            for (auto snd : sendList) {
-                cout << "Mokey throws item " << snd.second << " to monkey " << snd.first << endl;
-                monkeys[snd.first].addItem(snd.second);
-            }
-            cout << endl;
-        }
-        cout << endl;
-        monkeysList();
-        cout << " -- End round --" << endl << endl;
-    }
 
+    play(20,false);
     cout << "Results" << endl;
     vector<int> activity;
     for (int i=0, total = monkeys.size(); i<total; ++i) {
@@ -78,9 +63,30 @@ void MonkeyGame::part1()
     cout << "response : " << activity[0]*activity[1] << endl;
 }
 
-void MonkeyGame::monkeysList()
+void MonkeyGame::part2()
 {
-    unsigned i=0;
-    for (auto m : monkeys)
-        cout << "Monkey " << i++ << ": " << m.itemsStr() << endl;
+    cout << "Part #2 (10000 rounds, maxworry) : " << endl;
+
+    play(10000,true);
+    cout << "Results" << endl;
+    vector<unsigned long long> activity;
+    for (int i=0, total = monkeys.size(); i<total; ++i) {
+        cout << "Monkey " << i << " activity = " << monkeys[i].getActivity() << endl;
+        activity.push_back(monkeys[i].getActivity());
+    }
+    sort(activity.begin(),activity.end(),greater<int>());
+    cout << "top activities : " << activity[0] << " " << activity[1] << endl;
+    cout << "response : " << activity[0]*activity[1] << endl;
 }
+
+void MonkeyGame::play(unsigned nbRounds, bool maxworry) {
+    for (unsigned round=1; round<=nbRounds; round++) {
+        for(Monkey &monkey : monkeys) {
+            auto sendList = monkey.throwItems(maxworry);
+            for (auto snd : sendList) {
+                monkeys[snd.first].addItem(snd.second);
+            }
+        }
+    }
+}
+

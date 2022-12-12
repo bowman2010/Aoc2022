@@ -8,7 +8,7 @@ Monkey::Monkey()
     activity = 0;
 }
 
-vector<pair<MonkeyNr, Item>> Monkey::throwItems()
+vector<pair<MonkeyNr, Item>> Monkey::throwItems(bool maxworry)
 {
     vector<pair<MonkeyNr, Item>> vitems;
 
@@ -36,9 +36,11 @@ vector<pair<MonkeyNr, Item>> Monkey::throwItems()
             break;
         }
 
-        item=item/3;
-        if (trace)
-        cout << "Monkey gets bored with item. Worry level is divided by 3 to " << item << endl;
+        if (!maxworry) {
+            item=item/3;
+            if (trace)
+            cout << "Monkey gets bored with item. Worry level is divided by 3 to " << item << endl;
+        }
 
         if (item%testVal==0) {
             if (trace)
@@ -96,7 +98,7 @@ void Monkey::setTargetFalse(int newTargetFalse)
     targetFalse = newTargetFalse;
 }
 
-int Monkey::getActivity() const
+unsigned long long Monkey::getActivity() const
 {
     return activity;
 }
