@@ -48,35 +48,28 @@ void PrsGame::part2()
 Scores PrsGame::play(char p1, char p2)
 {
     switch (p1) {
-        case (A_ROCK) : {
+        case (A_ROCK) :
             switch (p2) {
             case (B_ROCK)       : return { ROCK_SCORE+DRAW_SCORE,   ROCK_SCORE+DRAW_SCORE       };
             case (B_PAPER)      : return { ROCK_SCORE+LOST_SCORE,   PAPER_SCORE+WIN_SCORE       };
             case (B_SCISSOR)    : return { ROCK_SCORE+WIN_SCORE,    SCISSOR_SCORE+LOST_SCORE    };
-            default: CHECK_FAIL();
             }; break;
-        }; break;
 
-        case (A_PAPER) : {
+        case (A_PAPER) :
             switch (p2) {
             case (B_ROCK)       : return { PAPER_SCORE+WIN_SCORE,   ROCK_SCORE+LOST_SCORE       };
             case (B_PAPER)      : return { PAPER_SCORE+DRAW_SCORE,  PAPER_SCORE+DRAW_SCORE      };
             case (B_SCISSOR)    : return { PAPER_SCORE+WIN_SCORE,   SCISSOR_SCORE+WIN_SCORE     };
-            default: CHECK_FAIL();
             }; break;
-        }; break;
 
-        case (A_SCISSOR) : {
+        case (A_SCISSOR) :
             switch (p2) {
             case (B_ROCK)       : return { SCISSOR_SCORE+LOST_SCORE, ROCK_SCORE+WIN_SCORE       };
             case (B_PAPER)      : return { SCISSOR_SCORE+WIN_SCORE,  PAPER_SCORE+LOST_SCORE     };
             case (B_SCISSOR)    : return { SCISSOR_SCORE+LOST_SCORE, SCISSOR_SCORE+DRAW_SCORE   };
-            default: CHECK_FAIL();
             }; break;
-        }; break;
-
-    default : CHECK_FAIL();
     }
+    CHECK_FAIL();
 }
 
 char PrsGame::shouldPlay(char p1, char goal)
